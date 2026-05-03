@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "MOM - Minutes of Meeting",
+  "version": "1.0",
+  "description": "Automatically transcribe and summarize your Google Meet meetings",
+  "permissions": ["tabs", "scripting", "audioCapture", "storage"],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "MOM Module",
+    "default_icon": {
+      "48": "src/images/icon-48.png",
+      "128": "src/images/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "src/js/background.js"
+  },
+  "icons": {
+    "48": "src/images/icon-48.png",
+    "128": "src/images/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["src/js/content.js"]
+    }
+  ]
+}
